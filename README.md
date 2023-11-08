@@ -1,17 +1,18 @@
 # dokshinda_infra
 dokshinda Infra repository
-DZ-3 Первая часть задания:
 
+#DZ-3 Первая часть задания:
 
+bastion_IP = 158.160.110.74
+someinternalhost_IP = 10.128.0.21
 
-    Использование bastion для доступа к хосту someinternalhost:
+# Использование bastion для доступа к хосту someinternalhost:
 
 ssh -J appuser@158.160.110.74 appuser@10.128.0.21
 
-    Использовать команду: ssh -o ProxyCommand="ssh -W %h:%p appuser@158.160.110.74 appuser@10.128.0.21
+# Использовать команду: ssh -o ProxyCommand="ssh -W %h:%p appuser@158.160.110.74 appuser@10.128.0.21
 
-
-    Отредактировать  ~/.ssh/config
+# Отредактировать  ~/.ssh/config
 
 Host someinternalhost
 
@@ -21,12 +22,12 @@ User appuser
 
 ProxyCommand ssh -W %h:%p appuser@158.160.110.74
 
-Команда подключения в данном случае будет выглядеть так:
+#Команда подключения в данном случае будет выглядеть так:
 
 ssh someinternalhost
 
 ______________________________________
-vpn настроен согласно инстр.
+#vpn настроен согласно инстр.
 
 cat <<EOF> setupvpn.sh
 
@@ -59,5 +60,10 @@ systemctl start mongod pritunl
 EOF
 
 sudo bash setupvpn.sh
+#setup
 
 https://158.160.110.74/setup
+
+#job test
+
+ssh -i ~/.ssh/appuser appuser@10.128.0.21
